@@ -9,18 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Database
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DatabaseSettings__ConnectionString"));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DB"));
 });
 
 // Identity 
-builder.Services.AddIdentityServer()
-    .AddAspNetIdentity<User>()
-    .AddInMemoryApiResources(Configuration.ApiResources)
-    .AddInMemoryIdentityResources(Configuration.IdentityResources)
-    .AddInMemoryApiScopes(Configuration.ApiScopes)
-    .AddInMemoryClients(Configuration.Clients)
-    .AddDeveloperSigningCredential();
-
 builder.Services.AddIdentity<User, IdentityRole>(config =>
     {
         config.Password.RequiredLength = 4;
@@ -31,6 +23,14 @@ builder.Services.AddIdentity<User, IdentityRole>(config =>
     })
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
+
+builder.Services.AddIdentityServer()
+    .AddAspNetIdentity<User>()
+    .AddInMemoryApiResources(Configuration.ApiResources)
+    .AddInMemoryIdentityResources(Configuration.IdentityResources)
+    .AddInMemoryApiScopes(Configuration.ApiScopes)
+    .AddInMemoryClients(Configuration.Clients)
+    .AddDeveloperSigningCredential();
 
 // Cookie
 builder.Services.ConfigureApplicationCookie(config =>
@@ -61,5 +61,5 @@ using (var scope = app.Services.CreateScope())
 
 app.UseRouting();
 app.UseIdentityServer();
-// app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
+app.MapDefaultControllerRoute();
 app.Run();
