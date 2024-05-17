@@ -13,6 +13,20 @@ services:
     volumes:
       - identity_pg_data:/var/lib/postgresql/data
   
+#  identity:
+#    build:
+#      context: .
+#      dockerfile: Infrastructure/Identity/Dockerfile
+#    env_file:
+#      - ./.env
+#    environment:
+#      - ASPNETCORE_ENVIRONMENT=${IDENTITY_ASPNETCORE_ENVIRONMENT}
+#      - ASPNETCORE_URLS=http://+:${IDENTITY_ASPNETCORE_PORT}
+#      - DatabaseSettings__ConnectionString=Host=${IDENTITY_POSTGRES_HOST};Port=${IDENTITY_POSTGRES_PORT};Database=${IDENTITY_POSTGRES_DB};Username=${IDENTITY_POSTGRES_USER};Password=${IDENTITY_POSTGRES_PASSWORD}
+#    ports:
+#      - "${IDENTITY_ASPNETCORE_PORT}:${IDENTITY_ASPNETCORE_PORT}"
+#    depends_on:
+#      - identity.db
   
   content.db:
     image: postgres:latest

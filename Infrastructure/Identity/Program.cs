@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Database
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DB"));
+    options.UseNpgsql(builder.Configuration["DatabaseSettings:ConnectionString"]);
 });
 
 // Identity 
@@ -62,4 +62,7 @@ using (var scope = app.Services.CreateScope())
 app.UseRouting();
 app.UseIdentityServer();
 app.MapDefaultControllerRoute();
+
+app.MapGet("/", () => "Hello World!");
+
 app.Run();

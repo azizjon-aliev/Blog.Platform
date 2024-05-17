@@ -19,8 +19,8 @@ public static class DependencyInjection
 
         services.AddDbContext<ContentDbContext>(options =>
             options.UseNpgsql(
-                configuration["DatabaseSettings:ConnectionString"],
-                b => b.MigrationsAssembly("Content.API")
+                configuration["DatabaseSettings:ConnectionString"]
+                // b => b.MigrationsAssembly("Content.Infrastructure.DataProvider")
             )
         );
 
