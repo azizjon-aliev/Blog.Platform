@@ -2,7 +2,6 @@ using Identity.Models;
 using IdentityServer4.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Identity.Controllers;
 
@@ -59,7 +58,7 @@ public class AuthController(
         };
         return View(viewModel);
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> Register(RegisterViewModel viewModel)
     {
@@ -80,10 +79,11 @@ public class AuthController(
             await signInManager.SignInAsync(user, false);
             return Redirect(viewModel.ReturnUrl);
         }
+
         ModelState.AddModelError(string.Empty, "Invalid username or password");
         return View(viewModel);
     }
-    
+
     [HttpGet]
     public async Task<IActionResult> Logout(string logoutId)
     {
