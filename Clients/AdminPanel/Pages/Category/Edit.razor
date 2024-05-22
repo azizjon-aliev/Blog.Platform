@@ -1,0 +1,17 @@
+@page "/categories/edit/{Id:guid}"
+
+<PageTitle>Изменить категорию</PageTitle>
+
+
+<h3>Изменить категорию - @_category.Name</h3>
+
+<EditForm Model="_category" OnValidSubmit="HandleValidSubmit">
+    <div class="form-group mb-3 w-50">
+        <label for="name">Название</label>
+        <InputText id="name" @bind-Value="_category.Name" class="form-control"/>
+    </div>
+    <div class="form-group mb-3 w-50">
+        <button @onclick="HandleClickCancelButton" class="btn btn-secondary">Отмена</button>
+        <button type="submit" class="btn btn-primary">Изменить</button>
+    </div>
+</EditForm>
