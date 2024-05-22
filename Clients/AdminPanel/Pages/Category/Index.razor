@@ -37,7 +37,7 @@ else
                 <td>@category.Name</td>
                 <td class="text-end">@category.CreatedAt.ToString("dd.MM.yyyy")</td>
                 <td class="text-end">
-                    <button @onclick="() => HandleClickEditItemButton(category.Id)" class="btn btn-primary">Редактировать</button>
+                    <button @onclick="() => HandleClickEditItemButton(category.Id)" class="btn btn-warning">Редактировать</button>
                     <button @onclick="() => HandleClickRemoveItemButton(category.Id)" class="btn btn-danger">Удалить</button>
                 </td>
             </tr>

@@ -1,0 +1,29 @@
+<div class="modal fade show d-block" tabindex="-1" role="dialog">
+    <div class="modal-backdrop fade show" @onclick="HandleClickCancelButton"></div>
+    <div class="modal-dialog" style="z-index: 1050">
+        <!-- Pop it above the backdrop -->
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title">Подвердите дествия</h5>
+                <button type="button" class="close" aria-label="Close" @onclick="HandleClickCancelButton">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container text-center">
+                    <div class="row mb-3">
+                        <div class="col">
+                            <h5>Вы действително хотите удалить ?</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-danger" @onclick="HandleClickConfirmButton">Да</button>
+                            <button class="btn btn-secondary" @onclick="HandleClickCancelButton">Нет</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

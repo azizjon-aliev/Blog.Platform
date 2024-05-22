@@ -5,9 +5,12 @@
 <h3>Добавления нового категория</h3>
 
 <form>
-    <div class="form-group">
+    <div class="form-group w-50">
         <label for="name">Название</label>
         <input type="text" class="form-control" id="name" @bind="@_category.Name" required/>
     </div>
-    <button type="button" class="btn btn-primary" @onclick="SaveNewCategory">Добавить</button>
+    <div class="form-group mb-3 w-50">
+        <a class="btn btn-secondary" onclick="window.history.back()">Назад</a>
+        <button type="button" class="btn btn-primary" @onclick="SaveNewCategory">Добавить</button>
+    </div>
 </form>

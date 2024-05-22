@@ -1,6 +1,9 @@
 using System.Net.Http.Json;
 using AdminPanel.DTO;
 using Microsoft.AspNetCore.Components;
+using Blazored.Modal;
+using Blazored.Modal.Services;
+using AdminPanel.Components;
 
 
 namespace AdminPanel.Pages.Category;
@@ -9,6 +12,8 @@ public partial class Index : ComponentBase
 {
     [Inject] private HttpClient HttpClient { get; set; } = null!;
     [Inject] private NavigationManager NavigationManager { get; set; } = null!;
+
+    [CascadingParameter] IModalService Modal { get; set; } = default!;
 
     private List<CategoryDto>? _categories;
 
@@ -29,11 +34,22 @@ public partial class Index : ComponentBase
 
     private async Task HandleClickRemoveItemButton(Guid id)
     {
-        var response = await HttpClient.DeleteAsync($"api/v1/Categories/{id}");
-
-        if (response.IsSuccessStatusCode)
+        var parameters = new ModalParameters();
+        var options = new ModalOptions
         {
-            await OnInitializedAsync();
+            UseCustomLayout = true
+        };
+
+        var modal = Modal.Show<ConfirmationModal>("Подвердите действия", parameters, options);
+        var result = await modal.Result;
+
+        if (!result.Cancelled)
+        {
+            var response = await HttpClient.DeleteAsync($"api/v1/Categories/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                await OnInitializedAsync();
+            }
         }
     }
 }

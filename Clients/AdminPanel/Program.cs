@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using AdminPanel;
+using Blazored.Modal;
 using Blazorise;
 using Blazorise.Bootstrap5;
 using Blazorise.Icons.FontAwesome;
@@ -16,5 +17,7 @@ builder.Services
     .AddFontAwesomeIcons();
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:9001") });
+
+builder.Services.AddBlazoredModal();
 
 await builder.Build().RunAsync();
