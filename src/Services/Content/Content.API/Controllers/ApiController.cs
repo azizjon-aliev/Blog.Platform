@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Content.API.Controllers;
 
 [ApiController]
-[Authorize]
+// [Authorize]
 [Route("api/v1/[controller]")]
 public abstract class ApiController : ControllerBase
 {
