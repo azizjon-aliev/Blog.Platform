@@ -2,7 +2,7 @@ using Content.API.Middleware;
 using Content.Application;
 using Content.Infrastructure;
 using Content.Infrastructure.DataProvider;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+// using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -24,43 +24,43 @@ abstract class Program
             c.SwaggerDoc(name: "v1", new OpenApiInfo() { Title = "Content.API", Version = "v1" });
 
 
-            c.AddSecurityDefinition("AuthToken 1",
-                new OpenApiSecurityScheme
-                {
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.Http,
-                    BearerFormat = "JWT",
-                    Scheme = "bearer",
-                    Name = "Authorization",
-                    Description = "Authorization token"
-                });
+            // c.AddSecurityDefinition("AuthToken 1",
+            //     new OpenApiSecurityScheme
+            //     {
+            //         In = ParameterLocation.Header,
+            //         Type = SecuritySchemeType.Http,
+            //         BearerFormat = "JWT",
+            //         Scheme = "bearer",
+            //         Name = "Authorization",
+            //         Description = "Authorization token"
+            //     });
 
-            c.AddSecurityRequirement(new OpenApiSecurityRequirement
-            {
-                {
-                    new OpenApiSecurityScheme
-                    {
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.SecurityScheme,
-                            Id = $"AuthToken 1"
-                        }
-                    },
-                    new string[] { }
-                }
-            });
+            // c.AddSecurityRequirement(new OpenApiSecurityRequirement
+            // {
+            //     {
+            //         new OpenApiSecurityScheme
+            //         {
+            //             Reference = new OpenApiReference
+            //             {
+            //                 Type = ReferenceType.SecurityScheme,
+            //                 Id = $"AuthToken 1"
+            //             }
+            //         },
+            //         new string[] { }
+            //     }
+            // });
         });
 
-        builder.Services.AddAuthentication(config =>
-        {
-            config.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            config.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        }).AddJwtBearer(options =>
-        {
-            options.Authority = builder.Configuration["JwtSettings:Authority"];
-            options.Audience = builder.Configuration["JwtSettings:Audience"];
-            options.RequireHttpsMetadata = false;
-        });
+        // builder.Services.AddAuthentication(config =>
+        // {
+        //     config.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        //     config.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        // }).AddJwtBearer(options =>
+        // {
+        //     options.Authority = builder.Configuration["JwtSettings:Authority"];
+        //     options.Audience = builder.Configuration["JwtSettings:Audience"];
+        //     options.RequireHttpsMetadata = false;
+        // });
 
         builder.Services.AddControllers();
 
@@ -90,8 +90,8 @@ abstract class Program
         });
         app.MapControllers();
         app.UseCustomExceptionHandler();
-        app.UseAuthentication();
-        app.UseAuthorization();
+        // app.UseAuthentication();
+        // app.UseAuthorization();
         app.Run();
     }
 }

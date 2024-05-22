@@ -9,7 +9,7 @@ public static class Configuration
     public static IEnumerable<ApiScope> ApiScopes =>
         new List<ApiScope>
         {
-            new ApiScope("BlogPlatformAPI", "Blog Platform API")
+            new ApiScope("BlogPlatformAdminPanel", "Blog Platform Admin Panel")
         };
 
     public static IEnumerable<IdentityResource> IdentityResources =>
@@ -22,9 +22,9 @@ public static class Configuration
     public static IEnumerable<ApiResource> ApiResources =>
         new List<ApiResource>
         {
-            new ApiResource("BlogPlatformAPI", "Blog Platform API", new[] { JwtClaimTypes.Name })
+            new ApiResource("BlogPlatformAdminPanel", "Blog Platform Admin Panel", new[] { JwtClaimTypes.Name })
             {
-                Scopes = { "BlogPlatformAPI" }
+                Scopes = { "BlogPlatformAdminPanel" }
             }
         };
 
@@ -33,28 +33,28 @@ public static class Configuration
         {
             new Client
             {
-                ClientId = "blog-platform-client",
-                ClientName = "Blog Platform Client",
+                ClientId = "BlogPlatformAdminPanelId",
+                ClientName = "Blog Platform Admin Panel",
                 AllowedGrantTypes = GrantTypes.Code,
-                RequirePkce = true,
                 RequireClientSecret = false,
-                RedirectUris = new List<string>
-                {
-                    "https://.../signin-oidc"
-                },
-                AllowedCorsOrigins =
-                {
-                    "https://..."
-                },
-                PostLogoutRedirectUris =
-                {
-                    "https://.../signout-oidc"
-                },
+                RequirePkce = true,
                 AllowedScopes =
                 {
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
-                    "BlogPlatformAPI",
+                    "BlogPlatformAdminPanel"
+                },
+                RedirectUris =
+                {
+                    "http://localhost:8000/authentication/login-callback"
+                },
+                AllowedCorsOrigins =
+                {
+                    "http://localhost:8000"
+                },
+                PostLogoutRedirectUris =
+                {
+                    "http://localhost:8000/authentication/logout-callback"
                 },
                 AllowAccessTokensViaBrowser = true
             }
