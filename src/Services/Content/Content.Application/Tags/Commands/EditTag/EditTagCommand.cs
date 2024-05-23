@@ -2,9 +2,9 @@ using Content.Application.Categories.Queries.GetCategoryById;
 using Content.Application.Tags.Queries.GetTagById;
 using MediatR;
 
-namespace Content.Application.Categories.Commands.EditCategory;
+namespace Content.Application.Tags.Commands.EditTag;
 
-public class EditCategoryCommand : IRequest<CategoryDetailVm>
+public class EditTagCommand : IRequest<TagDetailVm>
 {
     public Guid Id { get; set; }
 

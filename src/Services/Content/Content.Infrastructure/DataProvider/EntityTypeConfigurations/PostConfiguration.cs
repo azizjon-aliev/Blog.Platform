@@ -15,6 +15,9 @@ public class PostConfiguration : IEntityTypeConfiguration<Post>
         builder.HasOne(p => p.Category)
             .WithMany(c => c.Posts)
             .HasForeignKey(p => p.CategoryId);
+        
+        builder.HasMany(c => c.Tags)
+            .WithMany(p => p.Posts);
 
         builder.Property(p => p.UpdatedAt).IsRequired(false);
     }

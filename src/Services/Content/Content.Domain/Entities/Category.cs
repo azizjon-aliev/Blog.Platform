@@ -6,8 +6,6 @@ namespace Content.Domain.Entities
 		
         public ICollection<Post> Posts { get; } = [];
     
-        public DateTime CreatedAt { get; set; }
-    
-        public DateTime? UpdatedAt { get; set; }
+        
     }
 }
