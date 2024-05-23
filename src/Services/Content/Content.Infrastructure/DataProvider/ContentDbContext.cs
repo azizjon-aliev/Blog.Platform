@@ -12,12 +12,16 @@ public class ContentDbContext : DbContext, IContentDbContext
     }
 
     public DbSet<Category> Categories { get; set; }
+
+    public DbSet<Tag> Tags { get; set; }
+
     public DbSet<Post> Posts { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.ApplyConfiguration(new PostConfiguration());
         builder.ApplyConfiguration(new CategoryConfiguration());
+        builder.ApplyConfiguration(new TagConfiguration());
         base.OnModelCreating(builder);
     }
 }

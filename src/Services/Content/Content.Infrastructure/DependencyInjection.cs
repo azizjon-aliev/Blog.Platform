@@ -15,7 +15,7 @@ public static class DependencyInjection
         services.AddScoped<IContentDbContext, ContentDbContext>();
         services.AddScoped<IPostRepository, PostRepository>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
-
+        services.AddScoped<ITagRepository, TagRepository>();
 
         services.AddDbContext<ContentDbContext>(options =>
             options.UseNpgsql(
