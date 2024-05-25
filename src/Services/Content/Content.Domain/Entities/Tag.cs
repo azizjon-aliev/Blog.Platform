@@ -1,3 +1,5 @@
+using BlogPlatform.Service.Common.Entities;
+
 namespace Content.Domain.Entities;
 
 public class Tag : BaseEntity
