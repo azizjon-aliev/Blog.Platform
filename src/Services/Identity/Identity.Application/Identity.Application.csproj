@@ -14,4 +14,10 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.5" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="FluentValidation.DependencyInjectionExtensions">
+        <HintPath>..\..\..\..\..\..\..\..\.nuget\packages\fluentvalidation.dependencyinjectionextensions\11.9.1\lib\netstandard2.1\FluentValidation.DependencyInjectionExtensions.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>
