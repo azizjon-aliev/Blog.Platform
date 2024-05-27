@@ -1,4 +1,4 @@
-namespace BlogPlatform.Service.Common;
+namespace BlogPlatform.Service.Common.Entities;
 
 public class BaseEntity
 {

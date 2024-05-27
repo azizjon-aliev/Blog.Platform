@@ -7,9 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="AutoMapper" Version="13.0.1" />
-      <PackageReference Include="FluentValidation" Version="11.9.1" />
-      <PackageReference Include="MediatR" Version="12.2.0" />
+      <ProjectReference Include="..\Identity.Domain\Identity.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.5" />
     </ItemGroup>
 
 </Project>

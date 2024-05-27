@@ -1,4 +1,4 @@
-using BlogPlatform.Service.Common;
+using BlogPlatform.Service.Common.Entities;
 
 namespace Identity.Domain.Entities;
 
